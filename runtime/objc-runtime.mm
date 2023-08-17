@@ -35,7 +35,7 @@
 
 #include <TargetConditionals.h>
 
-#include <os/feature_private.h> // os_feature_enabled_simple()
+//#include <os/feature_private.h> // os_feature_enabled_simple()
 #include <os/variant_private.h> // os_variant_allows_internal_security_policies()
 
 #include "llvm-MathExtras.h"
@@ -364,19 +364,19 @@ void environ_init(void)
     // older SDKs. LRU coalescing can reorder releases and certain older apps
     // are accidentally relying on the ordering.
     // rdar://problem/63886091
-    if (!dyld_program_sdk_at_least(dyld_fall_2020_os_versions))
-        DisableAutoreleaseCoalescingLRU = true;
+//    if (!dyld_program_sdk_at_least(dyld_fall_2020_os_versions))
+//        DisableAutoreleaseCoalescingLRU = true;
 
     // class_rx_t pointer signing enforcement is *disabled* by default unless
     // this OS feature is enabled, but it can be explicitly enabled by setting
     // the environment variable, for testing.
-    if (!os_feature_enabled_simple(objc4, classRxSigning, false))
-        DisableClassRXSigningEnforcement = true;
+//    if (!os_feature_enabled_simple(objc4, classRxSigning, false))
+//        DisableClassRXSigningEnforcement = true;
 
     // Faults for class_ro_t pointer signing enforcement are disabled by
     // default unless this OS feature is enabled.
-    if (!os_feature_enabled_simple(objc4, classRoSigningFaults, false))
-        DisableClassROFaults = true;
+//    if (!os_feature_enabled_simple(objc4, classRoSigningFaults, false))
+//        DisableClassROFaults = true;
 
     bool PrintHelp = false;
     bool PrintOptions = false;
@@ -441,9 +441,9 @@ void environ_init(void)
         {
             DebugPoolAllocation = true;
         }
-    }
-
-    if (!os_feature_enabled_simple(objc4, preoptimizedCaches, true)) {
+//    }
+//
+//    if (!os_feature_enabled_simple(objc4, preoptimizedCaches, true)) {
         DisablePreoptCaches = true;
     }
 
